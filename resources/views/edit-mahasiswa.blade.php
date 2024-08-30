@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRUD</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+@section('title')
+Edit Data Mahasiswa
+@endsection
 
-<body>
-    <div class="container">
-        <h1>Edit Data Mahasiswa</h1>
+@section('heading')
+Edit Data Mahasiswa
+@endsection
+
+@section('content')
+<div class="card-body">
+    <div class="table-responsive">
         <form method="POST" action="{{ route('update-mahasiswa', ['nim' => $mahasiswa->nim]) }}">
             @csrf
             @method("PUT")
@@ -29,5 +29,5 @@
             <a href="{{ route('list-mahasiswa') }}" class="btn btn-danger">Kembali</a>
         </form>
     </div>
-</body>
-</html>
+</div>
+@endsection
