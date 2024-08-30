@@ -52,10 +52,16 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('mahasiswa') ?  'active' : '' }}">
                 <a class="nav-link" href="{{ route('list-mahasiswa') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Mahasiswa</span></a>
+            </li>
+
+            <li class="nav-item {{ request()->is('profile') ?  'active' : '' }}">
+                <a class="nav-link" href="{{ route('profile') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profile</span></a>
             </li>
 
             <!-- Divider -->
@@ -333,11 +339,15 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+        @csrf
+    </form>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
