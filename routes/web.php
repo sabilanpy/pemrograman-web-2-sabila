@@ -15,6 +15,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware(Authenticate::class);
+Route::post('/profile/change-avatar', [ProfileController::class, 'change_avatar'])->name('profile.change-avatar')->middleware(Authenticate::class);
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('list-mahasiswa')->middleware(Authenticate::class);
 Route::get('/tambah-mahasiswa', [MahasiswaController::class, 'create'])->name('tambah-mahasiswa')->middleware(Authenticate::class);
