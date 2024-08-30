@@ -5,9 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class mahasiswa extends Model
+class Mahasiswa extends Model
 {
     use HasFactory;
 
-    protected $table = ['nama', 'email'];
+    // Terapkan jika tabel tidak menerapkan aturan default
+    protected $table = 'mahasiswa';
+
+    // Tetapkan jika primary key bukan id
+    protected $primaryKey = 'nim';
+
+    // Terapkan jika primary key bukan id dan bukan incrementing
+    public $incrementing = false;
+
+    // Terapkan jika primary key bukan id dan tidak bertipe integer
+    protected $keyType = 'string';
+
+    // Terapkan jika di tabel tidak menggunakan timestamps
+    public $timestamps = false;
+
+    protected $fillable = ['nim', 'nama'];
 }

@@ -10,17 +10,30 @@
 
 <body>
     <div class="container">
-        <h1>Edit Data Mahasiswa</h1>
-        <form method="POST" action="{{ route('update-mahasiswa', ['nim' => $mahasiswa->nim]) }}">
+        <h1>Tambah Data Mahasiswa</h1>
+
+        {{-- @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif --}}
+
+        <form method="POST" action="{{ route('simpan-mahasiswa') }}">
             @csrf
-            @method("PUT")
             <div class="mb-3">
                 <label for="nim" class="form-label">NIM</label>
-                <input type="text" name="nim" class="form-control" id="nim" value="{{ $mahasiswa->nim }}" disabled>
+                <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror" id="nim">
+                @error('nim')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control  @error('nama') is-invalid @enderror" id="nama" value="{{ $mahasiswa->nama }}">
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama">
                 @error('nama')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
